@@ -23,7 +23,7 @@ npm install
 
 ### Start development server
 ```sh
-pnpm run dev
+npm run dev
 ```
 
 Aplikasi akan berjalan pada: http://localhost:5173/
