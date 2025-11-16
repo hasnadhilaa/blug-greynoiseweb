@@ -1,28 +1,29 @@
-# BLUG – Greynoise Website
+# BLUG - Greynoise team 
 Web portofolio dan blog pengkaderan 2025
 
-## 📦 Prerequisites
+## Development
+
+### Prerequisites
 Pastikan perangkatmu sudah terinstall:
-- Node.js (versi terbaru)
+- [NodeJS](https://nodejs.org)
 - npm
-- Visual Studio Code
+- [Editor Setup](https://docs.astro.build/en/editor-setup/)
 
----
+### Clone this repository
 
-## 🚀 Install Dependencies
-
-### Clone repository
 ```sh
 git clone https://github.com/hasnadhilaa/blug-greynoiseweb.git
 cd blug-greynoiseweb
+```
 
-## Install dependencies
+### Install dependencies
+```sh
 npm install
+```
 
-## Start development server
-npm run dev
+### Start development server
+```sh
+pnpm run dev
+```
 
-
-Aplikasi akan berjalan pada:
-
-http://localhost:5173/
+Aplikasi akan berjalan pada: http://localhost:5173/
