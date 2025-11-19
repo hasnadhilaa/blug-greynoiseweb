@@ -1,70 +1,155 @@
+/* Import GOOGLE FONT harus paling atas */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Baru import Tailwind */
 @import "tailwindcss";
 
+/* Root Variables */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --font-sans: "Poppins", sans-serif;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Colors */
+  --color-yellow-100: #ffc846;
+  --color-yellow-blur: #ffc84699;
+  --color-yellow-shadow: #ffc84640;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --color-orange-100: #ff9418;
+
+  --color-background-100: #ffffff;
+  --color-background-80: #e5eeff;
+  --color-background-trans: #ffffffcc;
+
+  /* Gradients */
+  --bg-blur-left: radial-gradient(
+    circle at 0% 100%,
+    var(--color-yellow-blur),
+    transparent 60%
+  );
+
+  --bg-blur-right: radial-gradient(
+    circle at 100% 20%,
+    var(--color-orange-100),
+    transparent 60%
+  );
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* GLOBAL BODY STYLE */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: var(--font-sans) !important; /* pastikan override Tailwind */
+  color: #2d2d2d;
+  background: var(--color-background-100);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Placeholder */
+::placeholder {
+  color: #9ca3af;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+/* Remove scrollbar */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Blur Blob Left */
+.blur-blob-left {
+  position: absolute;
+  bottom: 10%;
+  left: -5%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(
+    circle at 0% 80%,
+    #ffc846cc,
+    #ffc84688 40%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  opacity: 0.95;
+  z-index: -2;
+}
+
+/* Blur Blob Right */
+.blur-blob-right {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 420px;
+  height: 420px;
+  background: var(--bg-blur-right);
+  filter: blur(80px);
+  opacity: 0.85;
+  z-index: -2;
+}
+
+@media (max-width: 768px) {
+  .blur-blob-left,
+  .blur-blob-right {
+    width: 300px;
+    height: 300px;
+    filter: blur(60px);
   }
-  a:hover {
-    color: #747bff;
+}
+
+@media (max-width: 480px) {
+  .blur-blob-left,
+  .blur-blob-right {
+    width: 220px;
+    height: 220px;
+    filter: blur(45px);
   }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+
+
+/* Small decorative stars used in HeroSection */
+.stars-left {
+  position: absolute;
+  bottom: 2%;
+  left: 0%;
+  width: 180px;
+  height: 180px;
+  background-image: url("./assets/stars.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.stars-right {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 170px;
+  height: 170px;
+  background-image: url("./assets/stars.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Layout Helpers */
+.container-custom {
+  max-width: 1280px;
+  padding-inline: 20px;
+  margin-inline: auto;
+}
+
+.section-max {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+/* ICON COLOR FILTERS */
+.black-to-yellow {
+  filter: invert(74%) sepia(39%) saturate(2299%) hue-rotate(3deg)
+    brightness(101%) contrast(104%);
+}
+
+.black-to-orange {
+  filter: invert(58%) sepia(73%) saturate(2099%) hue-rotate(6deg)
+    brightness(101%) contrast(104%);
 }
