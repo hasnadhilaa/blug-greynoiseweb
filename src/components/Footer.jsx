@@ -4,7 +4,7 @@ import greynoiseLogo from "../assets/greynoise-rmv-bg.png";
 
 export default function Footer() {
   return (
-    <footer className="site-footer bg-[#2e3a3d] text-gray-300">
+    <footer className="site-footer">
       <div className="container-custom py-10 text-center">
         <div className="flex flex-col items-center gap-6">
           <div className="footer-logos flex items-center gap-6">

@@ -171,9 +171,9 @@ body {
 
 /* Footer styles for site footer component */
 .site-footer {
-  background: #2e3a3d;
-  color: #d1d5db;
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  /* Use project yellow as footer background (from :root) */
+  background: var(--color-yellow-100);
+  color: rgba(0,0,0,0.85);
 }
 
 .site-footer .container-custom {
@@ -211,16 +211,16 @@ body {
 }
 
 .site-footer .gn-divider {
-  width: 3px;
+  width: 6px;
   height: 56px;
-  background: #ff4b4b; /* merah tebal */
+  background: var(--color-orange-100); /* gunakan orange untuk kontras di atas kuning */
   border-radius: 5px;
 }
 
 .site-footer .gn-text {
   font-weight: 700;
   font-size: 28px;
-  color: #ffffff;
+  color: black;
   line-height: 1;
 }
 
@@ -241,7 +241,7 @@ body {
 
 .site-footer p,
 .site-footer a {
-  color: rgba(255,255,255,0.85);
+  color: rgba(0,0,0,0.78);
 }
 
 .site-footer nav ul {
@@ -254,7 +254,7 @@ body {
 }
 
 .site-footer nav a:hover {
-  color: #ffffff;
+  color: rgba(0,0,0,0.95);
   text-decoration: underline;
 }
 
