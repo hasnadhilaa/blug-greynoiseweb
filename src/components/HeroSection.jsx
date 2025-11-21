@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import GreyLogo from "../assets/greynoise-logo.png";
 
 export default function HeroSection() {
-  const fullText = "GREIYNOISE";
+  const fullText = "GREYNOISE";
   const [displayText, setDisplayText] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
 
