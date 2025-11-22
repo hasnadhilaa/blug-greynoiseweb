@@ -12,17 +12,15 @@ export default function HeroSection() {
 
     const interval = setInterval(() => {
       if (!deleting) {
-        // mengetik
         setDisplayText(fullText.slice(0, index + 1));
         index++;
 
         if (index === fullText.length) {
           setTimeout(() => {
             deleting = true;
-          }, 1000); // jeda sebelum mulai hapus
+          }, 1000);
         }
       } else {
-        // menghapus
         setDisplayText(fullText.slice(0, index - 1));
         index--;
 
@@ -32,7 +30,6 @@ export default function HeroSection() {
       }
     }, 120);
 
-    // cursor blinking
     const cursorBlink = setInterval(() => {
       setCursorVisible((prev) => !prev);
     }, 450);
@@ -52,17 +49,7 @@ export default function HeroSection() {
         px-6 lg:px-20
       "
     >
-      {/* Stars – KIRI BAWAH */}
-      <div className="absolute z-[-1] opacity-45 blur-[1px] stars-left"></div>
-
-      {/* Stars – KANAN ATAS */}
-      <div className="absolute z-[-1] opacity-45 blur-[1px] stars-right"></div>
-
-      {/* Blur Blob */}
-      <div className="blur-blob-left"></div>
-      <div className="blur-blob-right"></div>
-
-      {/* ---- CONTENT ---- */}
+      {/* ---- CONTENT ONLY (background dipindah ke PageBackground) ---- */}
       <div className="relative z-10 max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* LEFT TEXT */}
@@ -74,9 +61,7 @@ export default function HeroSection() {
             {/* TYPEWRITER */}
             <span className="text-[#ff9418]">
               {displayText}
-              <span
-                className={`${cursorVisible ? "opacity-100" : "opacity-0"}`}
-              >
+              <span className={cursorVisible ? "opacity-100" : "opacity-0"}>
                 |
               </span>
             </span>

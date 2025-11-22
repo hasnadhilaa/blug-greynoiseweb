@@ -7,17 +7,6 @@ export default function OurTeam() {
 return (
 <div className="relative min-h-screen px-6 lg:px-20 pt-32 pb-20">
 
-      {/* Stars – KIRI BAWAH */}
-      <div className="absolute z-[-1] opacity-45 blur-[1.3px] stars-left"></div>
-
-      {/* Stars – KANAN ATAS */}
-      <div className="absolute z-[-1] opacity-45 blur-[.3px] stars-right"></div>
-
-      {/* Blur Blob */}
-      <div className="blur-blob-left"></div>
-      <div className="blur-blob-right"></div>
-
-
 <h1 className="text-4xl lg:text-5xl font-bold text-center mb-14">
 Meet Our <span className="text-[#ff9418]">Team</span>
 </h1>

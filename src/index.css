@@ -1,10 +1,7 @@
-/* Import GOOGLE FONT harus paling atas */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-/* Baru import Tailwind */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 
-/* Root Variables */
+
 :root {
   --font-sans: "Poppins", sans-serif;
 
@@ -33,9 +30,9 @@
   );
 }
 
-/* GLOBAL BODY STYLE */
 body {
-  font-family: var(--font-sans) !important; /* pastikan override Tailwind */
+  position: relative; /* penting agar background absolute tidak hilang */
+  font-family: var(--font-sans) !important;
   color: #2d2d2d;
   background: var(--color-background-100);
   -webkit-font-smoothing: antialiased;
@@ -47,7 +44,7 @@ body {
   color: #9ca3af;
 }
 
-/* Remove scrollbar */
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -56,37 +53,36 @@ body {
   display: none;
 }
 
-/* Blur Blob Left */
-.blur-blob-left {
+.blur-blob-left,
+.blur-blob-right {
   position: absolute;
-  bottom: 10%;
-  left: -5%;
   width: 450px;
   height: 450px;
+  filter: blur(80px);
+  opacity: 0.9;
+  z-index: -10; /* dibuat lebih kecil agar tidak menutupi konten */
+}
+
+/* Left Blob */
+.blur-blob-left {
+  bottom: 10%;
+  left: -5%;
   background: radial-gradient(
     circle at 0% 80%,
     #ffc846cc,
     #ffc84688 40%,
     transparent 70%
   );
-  filter: blur(80px);
-  opacity: 0.95;
-  z-index: -2;
 }
 
-/* Blur Blob Right */
+/* Right Blob */
 .blur-blob-right {
-  position: absolute;
   top: -10%;
   right: -5%;
-  width: 420px;
-  height: 420px;
   background: var(--bg-blur-right);
-  filter: blur(80px);
-  opacity: 0.85;
-  z-index: -2;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .blur-blob-left,
   .blur-blob-right {
@@ -95,7 +91,6 @@ body {
     filter: blur(60px);
   }
 }
-
 @media (max-width: 480px) {
   .blur-blob-left,
   .blur-blob-right {
@@ -105,40 +100,50 @@ body {
   }
 }
 
-
-/* Small decorative stars used in HeroSection */
-.stars-left {
-  position: absolute;
-  bottom: 2%;
-  left: 0%;
-  width: 180px;
-  height: 180px;
-  background-image: url("./assets/stars.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
+.stars-left,
 .stars-right {
   position: absolute;
-  top: 0%;
-  right: 0%;
-  width: 170px;
-  height: 170px;
   background-image: url("./assets/stars.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  z-index: -5; /* berada di atas blob */
 }
 
-/* Responsive adjustments for stars on mobile */
+/* Left */
+.stars-left {
+  position: fixed;
+  bottom: 6%;  /* sejajarkan dengan blur kiri bawah */
+  left: 4%;
+  width: 160px;
+  height: 160px;
+  background-image: url("./assets/stars.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+/* Right */
+.stars-right {
+  position: fixed;
+  top: 4%;  /* sejajarkan dengan blur kanan atas */
+  right: 4%;
+  width: 150px;
+  height: 150px;
+  background-image: url("./assets/stars.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+
+/* Mobile adjustments */
 @media (max-width: 640px) {
   .stars-left {
     width: 120px;
     height: 120px;
     opacity: 0.6;
   }
-
   .stars-right {
     width: 100px;
     height: 100px;
@@ -146,7 +151,7 @@ body {
   }
 }
 
-/* Layout Helpers */
+
 .container-custom {
   max-width: 1280px;
   padding-inline: 20px;
@@ -158,7 +163,7 @@ body {
   margin-inline: auto;
 }
 
-/* ICON COLOR FILTERS */
+
 .black-to-yellow {
   filter: invert(74%) sepia(39%) saturate(2299%) hue-rotate(3deg)
     brightness(101%) contrast(104%);
@@ -169,15 +174,14 @@ body {
     brightness(101%) contrast(104%);
 }
 
-/* Footer styles for site footer component */
+
 .site-footer {
-  /* Use project yellow as footer background (from :root) */
   background: var(--color-yellow-100);
-  color: rgba(0,0,0,0.85);
+  color: rgba(0, 0, 0, 0.85);
 }
 
 .site-footer .container-custom {
-  padding-top: 2.5rem; /* matches py-10 */
+  padding-top: 2.5rem;
   padding-bottom: 2.5rem;
 }
 
@@ -191,10 +195,9 @@ body {
 .site-footer .footer-logos img {
   display: block;
   max-height: 56px;
-  height: auto;
 }
 
-/* Greynoise brand (logo + divider + text) */
+/* Greynoise Branding */
 .site-footer .greynoise-brand {
   display: flex;
   align-items: center;
@@ -206,14 +209,13 @@ body {
 }
 
 .site-footer .footer-logos img:first-child {
-  /* BLUG icon slightly smaller */
   max-height: 48px;
 }
 
 .site-footer .gn-divider {
   width: 6px;
   height: 56px;
-  background: var(--color-orange-100); /* gunakan orange untuk kontras di atas kuning */
+  background: var(--color-orange-100);
   border-radius: 5px;
 }
 
@@ -224,24 +226,30 @@ body {
   line-height: 1;
 }
 
+/* Responsive Footer */
 @media (max-width: 640px) {
   .site-footer .gn-logo {
     max-height: 44px;
   }
-
   .site-footer .gn-divider {
     height: 40px;
     width: 5px;
   }
-
   .site-footer .gn-text {
     font-size: 18px;
+  }
+  .site-footer .footer-logos img {
+    max-height: 44px;
+  }
+  .site-footer nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 }
 
 .site-footer p,
 .site-footer a {
-  color: rgba(0,0,0,0.78);
+  color: rgba(0, 0, 0, 0.78);
 }
 
 .site-footer nav ul {
@@ -254,17 +262,6 @@ body {
 }
 
 .site-footer nav a:hover {
-  color: rgba(0,0,0,0.95);
+  color: rgba(0, 0, 0, 0.95);
   text-decoration: underline;
-}
-
-@media (max-width: 640px) {
-  .site-footer .footer-logos img {
-    max-height: 44px;
-  }
-
-  .site-footer nav ul {
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
 }
