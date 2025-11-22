@@ -24,7 +24,7 @@ export default function BlogPage() {
                             {timeline.map((item, idx) => {
                                 const left = idx % 2 === 0;
                                 return (
-                                    <div key={item.year} className="flex flex-col md:flex-row items-center group">
+                                    <div key={item.year} className="flex flex-col md:flex-row items-center group relative">
                                         <div className={`md:w-1/2 w-full ${left ? "md:pr-12 md:justify-end flex" : "md:pl-12"}`}>
                                             {left && (
                                                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 w-full max-w-md border border-gray-100">
@@ -35,7 +35,8 @@ export default function BlogPage() {
                                             )}
                                         </div>
 
-                                        <div className="w-12 flex items-center justify-center my-4 md:my-0 z-10">
+                                        {/* marker positioned on the center line */}
+                                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center">
                                             <div className="w-4 h-4 rounded-full bg-white border-4 border-orange-500 shadow-lg group-hover:scale-150 transition-transform duration-300" />
                                         </div>
 
